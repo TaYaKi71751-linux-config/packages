@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Install neovim
 sudo apt-get install neovim -y
 # Install vim-plug
@@ -6,13 +6,18 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 # Download ".config/nvim/init.vim"
 download_file_to_home(){
-    FILE_PATH="$1"
-    echo "Download $FILE_PATH"
-    mkdir -p "~/$FILE_PATH"
-    rm -rf "~/$FILE_PATH"
-    sudo curl -LsSf \
-        "https://raw.githubusercontent.com/raccl/packages/ubuntu/$FILE_PATH" \
-         -o - | tee "~/$FILE_PATH"
+    local FPATH="$1"
+    local FNAME=`echo ${FPATH} | rev | cut -d '/' -f1 | rev`
+    echo "$FNAME"
+    echo `echo '$FNAME'`
+    local FDIR=`echo ${FPATH} | sed s/$FNAME//`
+    echo "$FDIR"
+    echo "Download $FNAME to $FDIR"
+    ls -la "$FDIR" || mkdir -p "$HOME/$FDIR"
+    echo "" | tee "$HOME/$FPATH" || rm -rf "$HOME/$FPATH"
+    curl -LsSf \
+        "https://raw.githubusercontent.com/raccl/packages/ubuntu/$FPATH" \
+         -o - | tee "$HOME/$FPATH"
     
 }
 download_file_to_home ".config/nvim/init.vim"
