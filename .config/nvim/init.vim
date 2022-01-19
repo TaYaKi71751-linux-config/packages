@@ -40,5 +40,8 @@ Plug '~/my-prototype-plugin'
 " Initialize plugin system
 " Use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" NERDTree
 Plug 'scrooloose/nerdtree'
+" Npm NVim
+Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
 call plug#end()
