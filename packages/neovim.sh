@@ -10,9 +10,11 @@ download_file(){
     echo "Download $FILE_PATH"
     mkdir -p "~/$FILE_PATH"
     rm -rf "~/$FILE_PATH"
-    curl -LsSf "https://raw.githubusercontent.com/raccl/packages/ubuntu/$FILE_PATH" -o - | tee "$HOME/$FILE_PATH"
+    curl -LsSf \
+        "https://raw.githubusercontent.com/raccl/packages/ubuntu/$FILE_PATH" \
+         -o "$HOME/$FILE_PATH"
 }
 download_file ".config/nvim/init.vim"
 
 # Install Plugins
-vim +PlugInstall +qall
+nvim +PlugInstall +qall
