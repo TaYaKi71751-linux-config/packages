@@ -8,7 +8,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 download_file(){
     FILE_PATH="$1"
     echo "Download $FILE_PATH"
-    mkdir "~/$FILE_PATH"
+    mkdir -p "~/$FILE_PATH"
     rm -rf "~/$FILE_PATH"
     curl -LsSf "https://raw.githubusercontent.com/raccl/packages/ubuntu/$FILE_PATH" -o - | tee "$HOME/$FILE_PATH"
 }
