@@ -1,6 +1,6 @@
 
-sudo apt remove cmdtest -y
-sudo apt remove yarn -y
+sudo apt remove cmdtest -y || true
+sudo apt remove yarn -y || true 
 # Add apt-key from yarnpkg
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 # Add repository from yarnpkg
