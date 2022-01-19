@@ -5,7 +5,7 @@ echo 'Add user linuxbrew'
 useradd -mG linuxbrew linuxbrew
 # Add user linuxbrew to sudoers list
 echo 'Add user linuxbrew to sudoers list'
-echo '%linuxbrew ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/linuxbrew-install
+echo '%linuxbrew ALL=(ALL:ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/linuxbrew-install
 # Install linuxbrew to user linuxbrew
 echo 'Install linuxbrew to user linuxbrew'
 sudo -u linuxbrew /bin/bash -c \
