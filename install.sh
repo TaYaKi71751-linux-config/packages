@@ -5,8 +5,8 @@ install_pkg(){
     sh -c "$(curl -LsSf https://raw.githubusercontent.com/raccl/packages/ubuntu/packages/$PKG_NAME.sh)"
 }
 install_pkg "tailscale"
-install_pkg "nodejs"
 install_pkg "zsh"
+install_pkg "nodejs"
 install_pkg "pacapt"
 install_pkg "vim"
 install_pkg "neovim"
