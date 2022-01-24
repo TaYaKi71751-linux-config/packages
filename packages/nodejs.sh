@@ -9,7 +9,7 @@ no_pw_sudo(){
 no_pw_sudo 'apt-get install nodejs npm -y'
 
 # Install nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 
 # nvm env
 export NVM_DIR="$HOME/.nvm"
