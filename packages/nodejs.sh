@@ -1,7 +1,12 @@
 #!/bin/sh
 
+no_pw_sudo(){
+ local CMD="$@"
+ echo "\n\n\n" | sudo -lS $CMD || echo "ERROR: No permissions to no_pw_sudo"
+}
+
 # Install nodejs npm 
-sudo apt-get install nodejs npm -y
+no_pw_sudo 'apt-get install nodejs npm -y'
 
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
