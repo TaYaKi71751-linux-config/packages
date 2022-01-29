@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 no_pw_sudo(){
  local CMD="$@"
@@ -20,5 +20,5 @@ aur_install(){
   echo "\n\n\n" | makepkg -i --noconfirm || true
 }
 
-# Install zsh
-pacman_install 'zsh'
+pacman_install 'base-devel'
+aur_install 'yay'

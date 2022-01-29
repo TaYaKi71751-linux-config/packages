@@ -5,27 +5,47 @@ no_pw_sudo(){
  echo "\n\n\n" | sudo -lS $CMD || echo "ERROR: No permissions to no_pw_sudo"
 }
 
+pacman_install(){
+ local PKG="$@"
+ no_pw_sudo "pacman -Syyu ${PKG} --noconfirm"
+}
+aur_install(){
+ local PKG="$@"
+ mkdir -p "${HOME}/.aur" || true &&
+  cd "${HOME}/.aur" &&
+  git -v || pacman_install "git" && 
+  git clone "https://aur.archlinux.org/${PKG}.git" &&
+  cd "${HOME}/.aur/${PKG}" &&
+  echo "\n\n\n" | makepkg -Si || true &&
+  echo "\n\n\n" | makepkg -i --noconfirm || true
+}
+
+raw_github(){
+ local ORG="$1"
+ local REPO="$2"
+ local BRANCH="$3"
+ local RAW_PATH="$4"
+ local OUT_DIR="$5"
+ local RAW_NAME=`echo ${RAW_PATH} | rev | cut -d '/' -f1 | rev`
+ local OUT_PATH="${OUT_DIR}/${RAW_NAME}"
+ echo "Download ${RAW_NAME} to ${OUT_PATH} from github:${ORG}/${REPO}\#${BRANCH}"
+ local DIR=$(ls -la "$OUT_DIR" || mkdir -p "${OUT_DIR}")
+ echo "${DIR}"
+ curl -LsSf \
+  "https://raw.githubusercontent.com/${ORG}/${REPO}/${BRANCH}/${RAW_PATH}" \
+  -o - | tee "${OUT_PATH}"
+}
+
 # Install neovim
-no_pw_sudo 'apt-get install neovim -y'
+pacman_install "neovim"
+pacman_install "python-pynvim"
+
 # Install vim-plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 # Download ".config/nvim/init.vim"
-download_file_to_home(){
-    local FPATH="$1"
-    local FNAME=`echo ${FPATH} | rev | cut -d '/' -f1 | rev`
-    echo "$FNAME"
-    echo `echo '$FNAME'`
-    local FDIR=`echo ${FPATH} | sed s/$FNAME//`
-    echo "$FDIR"
-    echo "Download $FNAME to $FDIR"
-    ls -la "$FDIR" || mkdir -p "$HOME/$FDIR"
-    echo "" | tee "$HOME/$FPATH" || rm -rf "$HOME/$FPATH"
-    curl -LsSf \
-        "https://raw.githubusercontent.com/raccl/packages/ubuntu/$FPATH" \
-         -o - | tee "$HOME/$FPATH"
-}
-download_file_to_home ".config/nvim/init.vim"
+raw_github 'raccl' 'packages' 'archlinux' "${HOME}/.config/nvim"
 
 # Install Plugins
 nvim +PlugInstall +qall

@@ -1,11 +1,24 @@
+#!/bin/bash
 
-sudo apt remove cmdtest -y || true
-sudo apt remove yarn -y || true 
-# Add apt-key from yarnpkg
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-# Add repository from yarnpkg
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-# Update => Reload /etc/apt/{sources.list,sources.list.d}
-sudo apt-get update -y
+no_pw_sudo(){
+ local CMD="$@"
+ echo "\n\n\n" | sudo -lS $CMD || echo "ERROR: No permissions to no_pw_sudo"
+}
+
+pacman_install(){
+ local PKG="$@"
+ no_pw_sudo "pacman -Syyu ${PKG} --noconfirm"
+}
+aur_install(){
+ local PKG="$@"
+ mkdir -p "${HOME}/.aur" || true &&
+  cd "${HOME}/.aur" &&
+  git -v || pacman_install "git" && 
+  git clone "https://aur.archlinux.org/${PKG}.git" &&
+  cd "${HOME}/.aur/${PKG}" &&
+  echo "\n\n\n" | makepkg -Si || true &&
+  echo "\n\n\n" | makepkg -i --noconfirm || true
+}
+
 # Install yarn
-sudo apt-get install yarn -y
+pacman_install 'yarn'
