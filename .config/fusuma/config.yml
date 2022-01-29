@@ -1,0 +1,53 @@
+hold:
+  3:
+    command: 'xdotool key alt+space' # Search => Alt + Space
+  4:
+    command: 'xdotool key ctrl+c'    # Cancel => Ctrl + C
+
+swipe:
+  3:
+    left: 
+      command: 'xdotool key alt+Tab' # Switch => Alt + Tab
+    right: 
+      command: 'xdotool key alt+Shift+Tab' # Switch => Alt + Shift + Tab
+    up: 
+      command: 'xdotool key ctrl+q'  # Quit => Ctrl + Q
+    down: 
+      command: 'xdotool key alt+F4'  # Quit => Alt + F4
+  4:
+    left: 
+      command: 'xdotool key alt+Right' # Forward => Alt + Right
+    right: 
+      command: 'xdotool key alt+Left' # Back => Alt + Left
+    up: 
+      command: 'xdotool key ctrl+0xff56' # Switch => Ctrl + PgDn
+    down: 
+      command: 'xdotool key ctrl+0xff55' # Switch => Ctrl + PgUp
+
+pinch:
+  2:
+    in:
+      command: 'xdotool key ctrl+plus' # Zoom In => Ctrl + Plus
+    out:
+      command: 'xdotool key ctrl+minus' # Zoom Out => Ctrl + Minus
+  3:
+    in:
+      command: 'xdotool key ctrl+t' # New Tab => Ctrl + T
+    out:
+      command: 'xdotool key ctrl+w' # Close Tab => Ctrl + W
+  4:
+    in:
+      command: 'xdotool key super+d' # Show Desktop => Super + D
+    out:
+      command: 'xdotool key super+d' # Show Desktop => Super + D
+threshold:
+  swipe: 0.4
+  pinch: 0.4
+plugin: 
+  inputs:
+    libinput_command_input:
+      enable-tap: true
+      verbose: true
+interval:
+  swipe: 0.8
+  pinch: 0.1
