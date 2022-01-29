@@ -14,7 +14,8 @@ aur_install(){
  mkdir -p "${HOME}/.aur" || true &&
   cd "${HOME}/.aur" &&
   git -v || pacman_install "git" && 
-  git clone "https://aur.archlinux.org/${PKG}.git" &&
+  git clone "https://aur.archlinux.org/${PKG}.git" || true &&
+  git pull --rebase && 
   cd "${HOME}/.aur/${PKG}" &&
   echo "\n\n\n" | makepkg -Si || true &&
   echo "\n\n\n" | makepkg -i --noconfirm || true
