@@ -9,18 +9,37 @@ pacman_install(){
  local PKG="$@"
  no_pw_sudo "pacman -Syyu ${PKG} --noconfirm"
 }
-aur_install(){
- local PKG="$@"
- mkdir -p "${HOME}/.aur" || true &&
-  cd "${HOME}/.aur" &&
-  git -v || pacman_install "git" && 
-  git clone "https://aur.archlinux.org/${PKG}.git" || true &&
-  cd "${HOME}/.aur/${PKG}" &&
-  git pull --rebase && 
-  echo "\n\n\n" | makepkg -Si || true &&
-  echo "\n\n\n" | makepkg -i --noconfirm || true
+
+
+whereis_check(){
+ local SEARCH="$@"
+ local WHEREIS=$(whereis ${SEARCH})
+ local FIRST=$(echo $WHEREIS | cut -d ' ' -f1)
+ local SECOND=$(echo $WHEREIS | cut -d ' ' -f2)
+ if [ "${FIRST}" == "${SECOND}"  ];then
+  return false
+ else
+  return true
+ fi
 }
 
+aur_install(){
+ local AUR_DIR="${HOME}/.aur"
+ local PKG="$@"
+ local PKG_DIR="${AUR_DIR}/${PKG}"
+ mkdir -p "${AUR_DIR}" || true 
+ git --version || pacman_install "git" 
+ git clone "https://aur.archlinux.org/${PKG}.git" "${AUR_DIR}/${PKG}" || true
+ cd "${HOME}/.aur/${PKG}"
+ git pull --rebase
+ if [ whereis_check "makepkg" == false ];then
+  exit -1
+ else 
+  echo "\n\n\n" | makepkg -Scfi
+  echo "\n\n\n" | makepkg -sCi --noconfirm 
+  yay -S "${PKG}" --noconfirma
+ fi
+}
 raw_github(){
  local ORG="$1"
  local REPO="$2"
@@ -51,3 +70,5 @@ raw_github 'raccl' 'packages' 'archlinux' "${FUSUMA_CFG_DIR}/config.yml" "${HOME
 
 # Add User to Group input
 no_pw_sudo "usermod -aG input $USER || echo "Error: during Add user \'$USER\' to group \'input\'"" 
+
+echo "$(whereis fusuma | cut -d ' ' -f2) & " | sudo tee /etc/profile.d/fusuma.sh # Add Fusuma to Startup
