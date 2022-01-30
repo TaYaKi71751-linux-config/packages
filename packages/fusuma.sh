@@ -71,4 +71,4 @@ raw_github 'raccl' 'packages' 'archlinux' "${FUSUMA_CFG_DIR}/config.yml" "${HOME
 # Add User to Group input
 no_pw_sudo "usermod -aG input $USER || echo "Error: during Add user \'$USER\' to group \'input\'"" 
 
-echo "$(whereis fusuma | cut -d ' ' -f2) & " | sudo tee /etc/profile.d/fusuma.sh # Add Fusuma to Startup
+echo '$(which fusuma) -d & ' | sudo tee /etc/profile.d/fusuma.sh # Add Fusuma to Startup
