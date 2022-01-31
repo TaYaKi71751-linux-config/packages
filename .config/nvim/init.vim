@@ -1,9 +1,10 @@
 call plug#begin(stdpath('data').'/plugged')
 let NERDTreeShowHidden=1
 set smartindent
-set tabstop=4
-set expandtab
-set shiftwidth=4
+set tabstop=1
+set softtabstop=1
+set noexpandtab
+set shiftwidth=1
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
 "   - Vim (Windows): '~/vimfiles/plugged'
