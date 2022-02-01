@@ -1,0 +1,31 @@
+on: 
+  workflow_dispatch:
+  push: 
+    branches-ignore:
+      - master
+  pull_request:
+
+name: Test Scripts
+jobs:
+  test:
+    name: Test Scripts
+    runs-on: ubuntu-latest
+    steps:  
+    - uses: docker-practice/actions-setup-docker@master
+    - uses: actions/checkout@master
+    - run: git rev-parse --abbrev-ref HEAD
+    - run: |
+        set -x
+        docker version
+    - run: |
+        # Export Current Branch Name
+        export BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+        # Install pacapt
+        sudo wget -O /usr/local/bin/pacapt https://github.com/icy/pacapt/raw/ng/pacapt
+        sudo chmod 755 /usr/local/bin/pacapt
+        docker run \
+          -v /usr/local/bin/pacapt:/bin/pacapt \
+          --rm -i \
+          ${BRANCH}:latest \
+          sh -c \
+          "echo y | pacapt -Sy && echo y | pacapt -Syyu curl sudo && curl -LsSf https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref }}/install.sh | sh"
