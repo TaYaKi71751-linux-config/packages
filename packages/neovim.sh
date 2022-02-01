@@ -39,3 +39,11 @@ raw_github 'raccl' 'packages' 'ubuntu' ".config/nvim/init.vim" "${HOME}/.config/
 
 # Install Plugins
 nvim +PlugInstall +qall
+
+
+# https://github.com/neoclide/coc-snippets/issues/196
+# Install python3 pip
+apt_install "python3"
+apt_install "python3-pip"
+# Install pynvim
+python3 -m pip install --user --upgrade pynvim
