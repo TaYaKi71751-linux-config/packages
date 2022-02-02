@@ -10,24 +10,40 @@ install_pkg(){
 }
 install_pkg "git"
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh |\
-	sed -e 's/unset\ HAVE_SUDO_ACCESS/HAVE_SUDO_ACCESS="false"/g' |\
-	sed -e 's/wait_for_user()/_()/g' |\
-	sed -e 's/wait_for_user//g')"
-
+BREW_PATH="${HOME}/.linuxbrew"
+if [ -d "${BREW_PATH}" ];then
+	git -C "${BREW_PATH}" pull || rm -rf "${BREW_PATH}"
+else
+	printf ""
+fi
+[ ! -d "${BREW_PATH}" ] && git clone https://github.com/Homebrew/brew.git ${BREW_PATH}
+BREW_BIN="${BREW_PATH}/bin"
 brew_shellenv(){
 	local SHELLENV_PATH="$1"
 	echo "${SHELLENV_PATH}"
-	test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-	test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-	test -d ${SHELLENV_PATH} && if [[ -z "$(cat ${SHELLENV_PATH} | grep '/bin/brew shellenv')"	]];then
-		test -r ${SHELLENV_PATH} && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ${SHELLENV_PATH}
-		echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ${SHELLENV_PATH}
-	else
-		echo "Already shellenv in ${SHELLENV_PATH}"
-	fi
+	test -d ${BREW_PATH} && eval "$(${BREW_BIN}/brew shellenv)"
+	test -d /home/linuxbrew/.linuxbrew && eval "$(${BREW_BIN}/brew shellenv)"
+	[ ! -z "$(cat ${SHELLENV_PATH} | grep brew)"	] &&\
+		echo "Already shellenv in ${SHELLENV_PATH}" && return 0;
+	[ -z "$(cat ${SHELLENV_PATH} | grep brew)"	] ||\
+		ls ${SHELLENV_PATH} &&\
+			echo "eval \"\$($(${BREW_BIN}/brew --prefix)/bin/brew shellenv)\"" >> ${SHELLENV_PATH} &&\
+			echo "Set brew shell env to ${SHELLENV_PATH}" && return 0;
 }
+export PATH="${BREW_BIN}:${PATH}"
 
+for SHELL_NAME in $(cat /etc/shells |\
+	cut -d '#' -f1 |\
+	rev |\
+	cut -d '/' -f1 |\
+	rev)
+do
+	if [ -z "${SHELL_NAME}" ];then
+		printf ""
+	else
+		brew_shellenv "${HOME}/.${SHELL_NAME}rc"
+	fi
+done
 for USER_RC in ${HOME}/.*shrc
 do 
 	brew_shellenv "${USER_RC}"
@@ -36,4 +52,5 @@ for USER_PROFILE in ${HOME}/.*profile
 do 
 	brew_shellenv "${USER_PROFILE}"
 done
+brew update
 
