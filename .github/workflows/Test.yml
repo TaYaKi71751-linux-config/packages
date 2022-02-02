@@ -28,4 +28,8 @@ jobs:
           --rm -i \
           ${BRANCH}:latest \
           sh -c \
-          "echo y | pacapt -Syyu sudo || true && curl -LsSf https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref }}/install.sh | sh"
+          "echo y | pacapt -Sy && 
+            ln -sf /usr/share/zoneinfo/UTC /etc/localtime && 
+            echo y | pacapt -Syyu tzdata && 
+            echo y | pacapt -Syyu curl sudo && 
+            curl -LsSf https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref }}/install.sh | sh"
