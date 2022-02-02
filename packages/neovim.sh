@@ -19,10 +19,11 @@ raw_github(){
 	local OUT_DIR=`dirname ${OUT_PATH}`
  local RAW_NAME=`basename ${RAW_PATH}`
  printf "Download ${RAW_NAME} to ${OUT_PATH} from github:${ORG}/${REPO}#${BRANCH}"
- ls -la "$OUT_DIR" &> /dev/null || mkdir -p "${OUT_DIR}" || true
- curl -LsSf \
+ test -d "$OUT_DIR" || mkdir -p "${OUT_DIR}"
+ test -d "$OUT_DIR" && curl -LsSf \
   "https://raw.githubusercontent.com/${ORG}/${REPO}/${BRANCH}/${RAW_PATH}" \
   -o - | tee "${OUT_PATH}"
+	ls "${OUT_PATH}" 
 }
 
 # Install neovim
