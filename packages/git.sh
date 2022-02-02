@@ -10,3 +10,4 @@ pacman_install(){
 }
 
 pacman_install "git"
+
