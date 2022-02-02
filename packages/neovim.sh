@@ -28,7 +28,6 @@ raw_github(){
 
 # Install neovim
 apt_install "neovim"
-apt_install "python-pynvim"
 
 # Install vim-plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -37,13 +36,12 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # Download ".config/nvim/init.vim"
 raw_github 'raccl' 'packages' 'ubuntu' ".config/nvim/init.vim" "${HOME}/.config/nvim/init.vim"
 
-# Install Plugins
-nvim +PlugInstall +qall
-
-
 # https://github.com/neoclide/coc-snippets/issues/196
 # Install python3 pip
 apt_install "python3"
 apt_install "python3-pip"
 # Install pynvim
 python3 -m pip install --user --upgrade pynvim
+
+# Install Plugins
+nvim +PlugInstall +qall
