@@ -20,8 +20,8 @@ brew_shellenv(){
 	echo "${SHELLENV_PATH}"
 	test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 	test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-	if [[ -z "$(cat ${SHELLENV_PATH} | grep '/bin/brew shellenv')"	]];then
-		test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ${SHELLENV_PATH}
+	test -d ${SHELLENV_PATH} && if [[ -z "$(cat ${SHELLENV_PATH} | grep '/bin/brew shellenv')"	]];then
+		test -r ${SHELLENV_PATH} && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ${SHELLENV_PATH}
 		echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ${SHELLENV_PATH}
 	else
 		echo "Already shellenv in ${SHELLENV_PATH}"
