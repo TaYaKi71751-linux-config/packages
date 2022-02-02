@@ -8,6 +8,7 @@ install_pkg(){
     echo "Install $PKG"
     sh -c "$(curl -LsSf https://raw.githubusercontent.com/${ORG}/${REPO}/${BRANCH}/${RAW_DIR}/${PKG}.sh)"
 }
+install_pkg "gh-cli"
 install_pkg "brew"
 install_pkg "git"
 install_pkg "pacapt"
