@@ -1,4 +1,13 @@
 #!/bin/bash
+ORG='raccl'
+REPO='packages'
+BRANCH='archlinux'
+RAW_DIR='packages'
+install_pkg(){
+ PKG="$1"
+ echo "Install $PKG"
+ sh -c "$(curl -LsSf https://raw.githubusercontent.com/${ORG}/${REPO}/${BRANCH}/${RAW_DIR}/${PKG}.sh)"
+}
 
 no_pw_sudo(){
  local CMD="$@"
@@ -43,3 +52,8 @@ pacman_install "python3"
 pacman_install "python-pip"
 # Install pynvim
 python3 -m pip install --user --upgrade pynvim
+
+# Config git core.editor
+which git ||\
+	install_pkg "git"
+	git config --global core.editor nvim
