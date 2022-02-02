@@ -2,7 +2,7 @@
 
 no_pw_sudo(){
  local CMD="$@"
- echo "\n\n\n" | sudo -lS $CMD || echo "ERROR: No permissions to no_pw_sudo"
+ printf "\n\n\n" | sudo -S $CMD || echo "ERROR: No permissions to no_pw_sudo"
 }
 apt_install(){
  local PKG="$@"
@@ -18,7 +18,7 @@ raw_github(){
  local OUT_PATH="$5"
 	local OUT_DIR=`dirname ${OUT_PATH}`
  local RAW_NAME=`basename ${RAW_PATH}`
- echo "Download ${RAW_NAME} to ${OUT_PATH} from github:${ORG}/${REPO}#${BRANCH}"
+ printf "Download ${RAW_NAME} to ${OUT_PATH} from github:${ORG}/${REPO}#${BRANCH}"
  ls -la "$OUT_DIR" &> /dev/null || mkdir -p "${OUT_DIR}" || true
  curl -LsSf \
   "https://raw.githubusercontent.com/${ORG}/${REPO}/${BRANCH}/${RAW_PATH}" \

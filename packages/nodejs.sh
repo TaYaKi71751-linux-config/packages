@@ -2,7 +2,7 @@
 
 no_pw_sudo(){
  local CMD="$@"
- echo "\n\n\n" | sudo -lS $CMD || echo "ERROR: No permissions to no_pw_sudo"
+ printf "\n\n\n" | sudo -S $CMD || echo "ERROR: No permissions to no_pw_sudo"
 }
 apt_install(){
  local PKG="$@"
