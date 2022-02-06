@@ -15,6 +15,10 @@ set shiftwidth=1
 
 " Make sure you use single quotes
 
+
+" https://github.com/folke/tokyonight.nvim
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
@@ -51,3 +55,4 @@ Plug 'scrooloose/nerdtree'
 " Npm NVim
 Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
 call plug#end()
+colorscheme tokyonight
