@@ -62,6 +62,9 @@ apt_install "python3-pip"
 # Install pynvim
 python3 -m pip install --user --upgrade pynvim
 
+# Install Plugs
+nvim +PlugInstall +qall
+
 # Config git core.editor
 which git ||\
 	install_pkg "git"
