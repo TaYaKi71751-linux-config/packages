@@ -36,6 +36,15 @@ raw_github(){
 	ls "${OUT_PATH}" 
 }
 
+add_source_list(){
+	local REPO="$@"
+	which add-apt-repository ||\
+		apt_install "software-properties-common"
+	no_pw_sudo "add-apt-repository ${REPO}" < /dev/null
+}
+
+# Add neovim Repository to /etc/source.list.d/
+add_source_list "ppa:neovim-ppa/stable"
 # Install neovim
 apt_install "neovim"
 
