@@ -43,8 +43,11 @@ pacman_install "python-pynvim"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-# Download ".config/nvim/init.vim"
-raw_github 'raccl' 'packages' 'archlinux' ".config/nvim/init.vim" "${HOME}/.config/nvim/init.vim"
+# Download nvim configs
+NVIM_CONFIG='.config/nvim'
+raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/init.vim" "${HOME}/${NVIM_CONFIG}/init.vim"
+raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/plugs.vim" "${HOME}/${NVIM_CONFIG}/plugs.vim"
+raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/settings.vim" "${HOME}/${NVIM_CONFIG}/settings.vim"
 
 # https://github.com/neoclide/coc-snippets/issues/196
 # Install python3 pip
