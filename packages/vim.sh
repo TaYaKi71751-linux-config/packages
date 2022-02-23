@@ -2,7 +2,7 @@
 
 no_pw_sudo(){
  local CMD="$@"
- printf "\n\n\n" | sudo -S $CMD || echo "ERROR: No permissions to no_pw_sudo"
+ printf "\n\n\n" | sudo -S $CMD || echo "no_pw_sudo ERROR: ${CMD}"
 }
 pacman_install(){
  local PKG="$@"
