@@ -13,17 +13,8 @@ pacman_install(){
 pacman_install "nodejs"
 pacman_install "npm"
 
-# Install nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+# Install 
+no_pw_sudo "sudo npm install -g n"
+# Use node latest version
+no_pw_sudo "sudo n latest"
 
-# nvm env
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# latest
- nvm install node
- nvm alias default node
-# lts 
-# nvm install --lts
-# nvm alias default --lts
