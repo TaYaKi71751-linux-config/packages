@@ -1,8 +1,13 @@
 #!/bin/bash
 
+# Followed to
+# https://tailscale.com/download
+# https://tailscale.com/install.sh
+# https://tailscale.com/kb/1060/install-ubuntu-1604/
+
 no_pw_sudo(){
  local CMD="$@"
- printf "\n\n\n" | sudo -S $CMD || echo "ERROR: No permissions to no_pw_sudo"
+ printf "\n\n\n" | sudo -S $CMD || echo "no_pw_sudo ERROR: ${CMD}"
 }
 apt_install(){
  local PKG="$@"
