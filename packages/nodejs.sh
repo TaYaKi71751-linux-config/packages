@@ -23,8 +23,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # latest
-# nvm install node
-# nvm use node
+ nvm install node
+ nvm alias default node
 # lts 
-nvm install --lts
-nvm use --lts
+# nvm install --lts
+# nvm alias default --lts
