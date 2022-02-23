@@ -9,6 +9,9 @@ call plug#begin(stdpath('data').'/plugged')
 
 " Make sure you use single quotes
 
+" https://github.com/jbyuki/instant.nvim
+Plug 'jbyuki/instant.nvim'
+
 " https://github.com/tveskag/nvim-blame-line
 Plug 'tveskag/nvim-blame-line'
 
