@@ -54,6 +54,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 # Download nvim configs
 NVIM_CONFIG='.config/nvim'
+raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/coc-settings.json" "${HOME}/${NVIM_CONFIG}/coc-settings.json"
 raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/init.vim" "${HOME}/${NVIM_CONFIG}/init.vim"
 raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/plugs.vim" "${HOME}/${NVIM_CONFIG}/plugs.vim"
 raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/settings.vim" "${HOME}/${NVIM_CONFIG}/settings.vim"
@@ -67,6 +68,8 @@ python3 -m pip install --user --upgrade pynvim
 
 # Install Plugs
 nvim +PlugInstall +qall
+# Install coc extentions
+nvim +'CocInstall -sync coc-json coc-tsserver coc-eslint' +qall
 
 # Config git core.editor
 which git ||\
