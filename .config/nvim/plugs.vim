@@ -9,6 +9,11 @@ call plug#begin(stdpath('data').'/plugged')
 
 " Make sure you use single quotes
 
+" https://github.com/kyazdani42/nvim-tree.lua
+" requires
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
 " https://github.com/jbyuki/instant.nvim
 Plug 'jbyuki/instant.nvim'
 
