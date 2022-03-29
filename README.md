@@ -1,4 +1,19 @@
 <h2>config/nvim</h2>
+<h4>Requirements</h4>
+<pre><code>
+<a
+	href="https://docs.brew.sh/Homebrew-on-Linux"
+	>brew</a> install \
+	<a
+		href="https://formulae.brew.sh/formula/neovim"
+	>neovim</a> \
+	<a
+		href="https://formulae.brew.sh/formula/yarn"
+	>yarn</a> \
+	<a
+		href="https://formulae.brew.sh/formula/npm"
+	>npm</a>
+</code></pre>
 <h3>Config</h3>
 <pre><code>
 	git clone \
