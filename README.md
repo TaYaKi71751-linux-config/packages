@@ -1,4 +1,21 @@
 <h2>config/fusuma</h2>
+<h4>Requirements</h4>
+<pre><code>
+<a
+	href="https://docs.brew.sh/Homebrew-on-Linux"
+	>brew</a> install \
+	<a
+		href="https://formulae.brew.sh/formula/ruby"
+	>ruby</a>
+</code></pre>
+<pre><code>
+<a
+	href="https://github.com/rubygems/rubygems"
+	>gem</a> install \
+	<a
+		href="https://github.com/iberianpig/fusuma"
+	>fusuma</a>
+</code></pre>
 <h4>Config</h4>
 <pre><code>
 	git clone \
