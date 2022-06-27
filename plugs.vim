@@ -29,6 +29,9 @@ Plug 'andweeb/presence.nvim'
 " https://github.com/folke/tokyonight.nvim
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
+" https://github.com/catppuccin/nvim
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
