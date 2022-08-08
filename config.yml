@@ -1,45 +1,43 @@
 hold:
   3:
-    command: 'xdotool key alt+space'
-  4:
-    command: 'xdotool key ctrl+c'
+    sendkey: 'ALT+SPACE'
 
 swipe:
   3:
     left: 
-      command: 'xdotool key alt+Tab'
+      sendkey: 'LEFTALT+TAB'
     right: 
-      command: 'xdotool key alt+Shift+Tab'
+      sendkey: 'LEFTALT+LEFTSHIFT+TAB'
     up: 
-      command: 'xdotool key ctrl+q'
+      sendkey: 'LEFTCTRL+Q'
     down: 
-      command: 'xdotool key alt+F4'
+      sendkey: 'LEFTALT+F4'
   4:
     left: 
-      command: 'xdotool key alt+Right'
+      sendkey: 'LEFTALT+RIGHT'
     right: 
-      command: 'xdotool key alt+Left'
+      sendkey: 'LEFTALT+LEFT'
     up: 
-      command: 'xdotool key ctrl+0xff56'
+      sendkey: 'LEFTCTRL+TAB'
     down: 
-      command: 'xdotool key ctrl+0xff55'
+      sendkey: 'LEFTCTRL+LEFTSHIFT+TAB'
 
 pinch:
   2:
     in:
-      command: 'xdotool key ctrl+plus'
+      sendkey: 'ZOOMIN'
     out:
-      command: 'xdotool key ctrl+minus'
+      sendkey: 'ZOOMOUT'
   3:
     in:
-      command: 'xdotool key ctrl+t'
+      sendkey: 'LEFTCTRL+T'
     out:
-      command: 'xdotool key ctrl+w'
+      sendkey: 'LEFTCTRL+W'
   4:
     in:
-      command: 'xdotool key super+d'
+      sendkey: 'LEFTMETA+D'
     out:
-      command: 'xdotool key super+d'
+      sendkey: 'LEFTMETA+D'
 threshold:
   swipe: 0.4
   pinch: 0.4
