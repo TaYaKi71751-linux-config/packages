@@ -20,11 +20,11 @@
 <pre><code>
 	git clone \
 		-b <a
-			href="https://github.com/raccl/packages/tree/config/fusuma"
+			href="https://github.com/TaYaKi71751-linux-config/packages/tree/config/fusuma"
 		>config/fusuma</a> \
 		https://github.com/<a
-			href="https://github.com/raccl/packages"
-		>raccl/packages</a>.git \
+			href="https://github.com/TaYaKi71751-linux-config/packages"
+		>TaYaKi71751-linux-config/packages</a>.git \
 			~/.config/fusuma
 </code></pre>
 or
@@ -32,11 +32,11 @@ or
 curl -LsSf \
 "https://github.com/\
 <a
-	href="https://github.com/raccl/packages"
->raccl/packages</a>\
+	href="https://github.com/TaYaKi71751-linux-config/packages"
+>TaYaKi71751-linux-config/packages</a>\
 /raw/\
 <a
-	href="https://github.com/raccl/packages/tree/config/fusuma"
+	href="https://github.com/TaYaKi71751-linux-config/packages/tree/config/fusuma"
 >config/fusuma</a>\
 /config.sh" | sh
 </code></pre>
