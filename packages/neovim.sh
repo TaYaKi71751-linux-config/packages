@@ -44,11 +44,17 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Download nvim configs
-NVIM_CONFIG='.config/nvim'
-raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/coc-settings.json" "${HOME}/${NVIM_CONFIG}/coc-settings.json"
-raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/init.vim" "${HOME}/${NVIM_CONFIG}/init.vim"
-raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/plugs.vim" "${HOME}/${NVIM_CONFIG}/plugs.vim"
-raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/settings.vim" "${HOME}/${NVIM_CONFIG}/settings.vim"
+curl -LsSf \
+"https://github.com/\
+TaYaKi71751-linux-config/packages\
+/raw/\
+config/nvim\
+/config.sh" | sh
+# NVIM_CONFIG='.config/nvim'
+# raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/coc-settings.json" "${HOME}/${NVIM_CONFIG}/coc-settings.json"
+# raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/init.vim" "${HOME}/${NVIM_CONFIG}/init.vim"
+# raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/plugs.vim" "${HOME}/${NVIM_CONFIG}/plugs.vim"
+# raw_github "${ORG}" "${REPO}" "${BRANCH}" "${NVIM_CONFIG}/settings.vim" "${HOME}/${NVIM_CONFIG}/settings.vim"
 
 # https://github.com/neoclide/coc-snippets/issues/196
 # Install python3 pip
