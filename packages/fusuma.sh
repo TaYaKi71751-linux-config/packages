@@ -66,7 +66,7 @@ aur_install "ruby-fusuma-plugin-appmatcher"
 
 # Download Config
 FUSUMA_CFG_DIR='.config/fusuma'
-raw_github 'raccl' 'packages' 'archlinux' "${FUSUMA_CFG_DIR}/config.yml" "${HOME}/${FUSUMA_CFG_DIR}"
+raw_github 'TaYaKi71751-linux-config' 'packages' 'archlinux' "${FUSUMA_CFG_DIR}/config.yml" "${HOME}/${FUSUMA_CFG_DIR}"
 
 # Add User to Group input
 no_pw_sudo "usermod -aG input $USER || echo "Error: during Add user \'$USER\' to group \'input\'"" 

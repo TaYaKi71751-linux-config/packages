@@ -1,5 +1,5 @@
 #!/bin/sh
-ORG='raccl'
+ORG='TaYaKi71751-linux-config'
 REPO='packages'
 BRANCH='archlinux'
 RAW_DIR='packages'
