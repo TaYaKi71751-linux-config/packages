@@ -65,8 +65,14 @@ aur_install "ruby-fusuma-plugin-keypress"
 aur_install "ruby-fusuma-plugin-appmatcher"
 
 # Download Config
-FUSUMA_CFG_DIR='.config/fusuma'
-raw_github 'TaYaKi71751-linux-config' 'packages' 'archlinux' "${FUSUMA_CFG_DIR}/config.yml" "${HOME}/${FUSUMA_CFG_DIR}"
+curl -LsSf \
+"https://github.com/\
+TaYaKi71751-linux-config/packages\
+/raw/\
+config/fusuma\
+/config.sh" | sh
+# FUSUMA_CFG_DIR='.config/fusuma'
+# raw_github 'TaYaKi71751-linux-config' 'packages' 'archlinux' "${FUSUMA_CFG_DIR}/config.yml" "${HOME}/${FUSUMA_CFG_DIR}"
 
 # Add User to Group input
 no_pw_sudo "usermod -aG input $USER || echo "Error: during Add user \'$USER\' to group \'input\'"" 
