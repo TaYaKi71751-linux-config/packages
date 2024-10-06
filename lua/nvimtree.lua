@@ -61,7 +61,7 @@ require("nvim-tree").setup({
     group_empty = true,
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
   },
 		respect_buf_cwd = true,
 		create_in_closed_folder = true,
