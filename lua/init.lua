@@ -1,3 +1,5 @@
 require('nvimtree')
 require('line')
 require('theme')
+-- require('tabnine_setup')
+require('luasnip_setup')
