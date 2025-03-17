@@ -35,7 +35,7 @@ local t = luasnip.text_node
 local i = luasnip.insert_node
 local f = luasnip.function_node
 
-luasnip.add_snippets("html", {
+luasnip.add_snippets("jsp", {
   s("jsp", {
     t({
       '<%@ page language="java" contentType="text/html; charset=UTF-8"',
@@ -55,7 +55,7 @@ luasnip.add_snippets("html", {
 })
 
 luasnip.add_snippets("html", {
-  s("html5", {
+  s("html", {
     t({"<!DOCTYPE html>", "<html>", "<head>"}),
     t({"", '    <meta charset="UTF-8">'}),
     t({"", "    <title>"}), i(1, "Insert title here"), t("</title>"),
