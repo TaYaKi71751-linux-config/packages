@@ -79,12 +79,13 @@ end
 
 -- Function to extract the class name from the file
 local function get_class_name()
-  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false) -- Get all lines
-  for _, line in ipairs(lines) do
-    local class = line:match("public%s+class%s+([%w_]+)") -- Match class declaration
-    if class then return class end
-  end
-		return ""
+  local filename = vim.fn.expand('%:t') 
+
+  -- Remove the extension from the filename to get the class name
+  local class_name = filename:match("^(.*)%..*$")
+
+  -- Return the class name or a default one if no match is found
+  return class_name or ""
 end
 
 -- Adding snippets
