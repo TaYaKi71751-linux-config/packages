@@ -35,6 +35,31 @@ local t = luasnip.text_node
 local i = luasnip.insert_node
 local f = luasnip.function_node
 
+luasnip.add_snippets("xml", {
+	s("pom-servlet", {
+		t({
+			'<dependency>',
+			'    <groupId>javax.servlet</groupId>',
+			'    <artifactId>javax.servlet-api</artifactId>',
+   '    <version>4.0.1</version>',
+   '    <scope>provided</scope>',
+			'</dependency>'
+		})
+	})
+})
+
+luasnip.add_snippets("xml", {
+	s("pom-jstl", {
+		t({
+			'<dependency>',
+			'    <groupId>javax.servlet</groupId>',
+			'    <artifactId>jstl</artifactId>',
+			'    <version>1.2</version>',
+			'</dependency>'
+		})
+	})
+})
+
 luasnip.add_snippets("jsp", {
   s("jsp", {
     t({
