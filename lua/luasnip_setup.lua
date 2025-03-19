@@ -36,6 +36,19 @@ local i = luasnip.insert_node
 local f = luasnip.function_node
 
 luasnip.add_snippets("xml", {
+	s("pom-ojdbc8", {
+		t({
+			'<dependency>',
+			'    <groupId>com.oracle.database.jdbc</groupId>',
+			'    <artifactId>ojdbc8</artifactId>',
+			'    <version>23.7.0.25.01</version>',
+			'</dependency>'
+		})
+	})
+})
+
+
+luasnip.add_snippets("xml", {
 	s("pom-servlet", {
 		t({
 			'<dependency>',
