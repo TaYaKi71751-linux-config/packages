@@ -74,6 +74,14 @@ luasnip.add_snippets("xml", {
 })
 
 luasnip.add_snippets("jsp", {
+  s("jsp-import", {
+    t({
+      '<%@ page import=""%>'
+    }),
+  }),
+})
+
+luasnip.add_snippets("jsp", {
   s("jsp", {
     t({
       '<%@ page language="java" contentType="text/html; charset=UTF-8"',
