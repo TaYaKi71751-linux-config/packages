@@ -111,6 +111,24 @@ luasnip.add_snippets("html", {
     t({"", "</body>", "</html>"})
   }),
 })
+luasnip.add_snippets("html", {
+  s("html5", {
+    t({
+      "<!DOCTYPE html>",
+      "<html lang=\"en\">",
+      "<head>",
+      "    <meta charset=\"UTF-8\">",
+      "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+      "    <title>Document</title>",
+      "</head>",
+      "<body>",
+      "",
+      "</body>",
+      "</html>",
+    }),
+  }),
+})
+
 
 
 -- Function to extract the package name from the current directory
