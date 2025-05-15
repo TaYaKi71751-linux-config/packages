@@ -12,5 +12,8 @@
 
 " catppuccin theme
 " Vim Script
-let g:catppuccin_flavour = "frappe" " latte, frappe, macchiato, mocha
-colorscheme catppuccin
+" let g:catppuccin_flavour = "frappe" " latte, frappe, macchiato, mocha
+" colorscheme catppuccin
+
+let g:background = "dark"
+colorscheme sakura

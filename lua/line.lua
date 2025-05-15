@@ -4,7 +4,7 @@ require('lualine').setup {
     -- ... your lualine config
     -- theme = 'tokyonight'
 				-- catppuccin
-    theme = 'catppuccin'
+    theme = 'sakura'
     -- ... your lualine config
   }
 }

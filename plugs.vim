@@ -78,4 +78,6 @@ Plug 'hrsh7th/nvim-cmp'
 
 " Install completion source for LuaSnip
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'rktjmp/lush.nvim'
+Plug 'anAcc22/sakura.nvim'
 call plug#end()
