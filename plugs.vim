@@ -69,7 +69,7 @@ Plug 'scrooloose/nerdtree'
 
 " Npm NVim
 Plug 'neoclide/npm.nvim', {'do' : 'npm install'}
-Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
+" Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
 " follow latest release and install jsregexp.
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} " Replace <CurrentMajor> by the latest released major (first number of latest release)
 
