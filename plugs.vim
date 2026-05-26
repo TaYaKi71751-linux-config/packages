@@ -75,6 +75,8 @@ Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} " Replac
 
 " Install nvim-cmp (completion engine)
 Plug 'hrsh7th/nvim-cmp'
+Plug 'folke/snacks.nvim'
+Plug 'ishiooon/codex.nvim'
 
 " Install completion source for LuaSnip
 Plug 'saadparwaiz1/cmp_luasnip'
