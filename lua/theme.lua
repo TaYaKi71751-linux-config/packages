@@ -14,5 +14,5 @@
 -- Lua
 -- vim.g.catppuccin_flavour = "" -- latte, frappe, macchiato, mocha
 -- vim.cmd[[colorscheme catppuccin]]
-vim.opt.background = "light" -- or "light"
+vim.opt.background = "dark" -- or "light"
 vim.cmd[[colorscheme sakura]] -- sets the colorscheme

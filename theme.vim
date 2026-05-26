@@ -15,5 +15,5 @@
 " let g:catppuccin_flavour = "frappe" " latte, frappe, macchiato, mocha
 " colorscheme catppuccin
 
-let g:background = "light"
+let g:background = "dark"
 colorscheme sakura
